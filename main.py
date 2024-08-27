@@ -7,20 +7,6 @@ import os
 import datetime
 import shutil
 
-def obtener_ip_privada():
-    try:
-        # Crea un socket temporal para conectarse a una dirección externa
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        # No se envían datos, solo se utiliza para obtener la IP local asignada por el sistema
-        s.connect(("8.8.8.8", 80))
-        ip_privada = s.getsockname()[0]
-        s.close()
-        return ip_privada
-    except Exception as e:
-        return str(e)
-
-IP = obtener_ip_privada()
-
 app = FastAPI()
 
 app.add_middleware(
